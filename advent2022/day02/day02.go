@@ -1,8 +1,10 @@
-package main
+package day02
 
 import (
 	"fmt"
 	"strings"
+
+	"github.com/dunnza/adventofcode/utils"
 )
 
 const (
@@ -17,7 +19,15 @@ const (
 	win              = "Z"
 )
 
-func day02_a(input string) {
+func Day02() {
+	fmt.Println("Day Two:")
+	input := utils.ReadFile("./advent2022/day02/day02.txt")
+	partOne(input)
+	partTwo(input)
+	fmt.Println()
+}
+
+func partOne(input string) {
 	score := 0
 	for _, line := range strings.Split(input, "\n") {
 		opp, me := getParts(line)
@@ -28,7 +38,7 @@ func day02_a(input string) {
 	fmt.Printf("Part One, my score: %d\n", score)
 }
 
-func day02_b(input string) {
+func partTwo(input string) {
 	score := 0
 	for _, line := range strings.Split(input, "\n") {
 		opp, outcome := getParts(line)
@@ -40,11 +50,7 @@ func day02_b(input string) {
 	fmt.Printf("Part Two, my score based on outcome: %d\n", score)
 }
 
-func Day02() {
-	input := readFile("./input/day02.txt")
-	day02_a(input)
-	day02_b(input)
-}
+/// HELPER FUNCTIONS ----------------------------------------------------------
 
 func getParts(line string) (string, string) {
 	temp := strings.Split(line, " ")
